@@ -1,4 +1,4 @@
-package com.example.ob_spring_security_oauth_github.config.model;
+package com.example.ob_spring_security_oauth_github.model;
 
 import jakarta.persistence.*;
 import lombok.Getter;

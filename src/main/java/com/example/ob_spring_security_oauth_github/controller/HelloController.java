@@ -1,6 +1,6 @@
 package com.example.ob_spring_security_oauth_github.controller;
-import com.example.ob_spring_security_oauth_github.config.model.User;
-import com.example.ob_spring_security_oauth_github.config.service.UserService;
+import com.example.ob_spring_security_oauth_github.model.User;
+import com.example.ob_spring_security_oauth_github.service.UserService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -10,6 +10,7 @@ import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.Map;
 
@@ -20,7 +21,7 @@ public class HelloController {
     private UserService userService;
 
     // Endpoint para page1
-    @GetMapping("/page1")
+    @GetMapping("/page")
     public String page1(Model model) {
         model.addAttribute("message", "Bienvenido a la página segura");
         return "page1";
@@ -47,4 +48,24 @@ public class HelloController {
 
         return "page2";
     }
+
+/*    @GetMapping("/api/user")
+    @ResponseBody
+    public Map<String, Object> getUser(
+            @RegisteredOAuth2AuthorizedClient OAuth2AuthorizedClient client,
+            @AuthenticationPrincipal OAuth2User user
+    ) {
+        if (user == null || client == null) {
+            return Map.of("error", "Usuario no autenticado");
+        }
+
+        Map<String, Object> userAttributes = user.getAttributes();
+        User savedUser = userService.saveOrUpdateUser(userAttributes);
+
+        return Map.of(
+                "clientName", client.getClientRegistration().getClientName(),
+                "userName", savedUser.getName() != null ? savedUser.getName() : "Nombre no disponible",
+                "userAttributes", userAttributes
+        );
+    }*/
 }

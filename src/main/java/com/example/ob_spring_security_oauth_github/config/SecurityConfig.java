@@ -4,27 +4,24 @@ package com.example.ob_spring_security_oauth_github.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.web.SecurityFilterChain;
-
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {
 
-
     @Bean
-    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-
+    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
-                .authorizeHttpRequests((authz) -> authz
-                        .requestMatchers("/", "/login**").permitAll()
-                        .anyRequest().authenticated()
+                .authorizeHttpRequests(authorize -> authorize
+                        .requestMatchers("/", "/oauth2/**").permitAll() // Permitir acceso a rutas específicas
+                        .anyRequest().authenticated() // Requiere autenticación para otras solicitudes
                 )
-           .oauth2Login(Customizer.withDefaults());
+                .oauth2Login(oauth2 -> oauth2
+                        .loginPage("/oauth2/authorization/github") // Ruta personalizada para iniciar sesión
+                );
+
         return http.build();
-
-
     }
-    }
+}

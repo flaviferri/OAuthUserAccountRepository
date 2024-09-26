@@ -1,9 +1,9 @@
-package com.example.ob_spring_security_oauth_github.config.service;
+package com.example.ob_spring_security_oauth_github.service;
 
 
 
-import com.example.ob_spring_security_oauth_github.config.model.User;
-import com.example.ob_spring_security_oauth_github.config.repository.UserRepository;
+import com.example.ob_spring_security_oauth_github.model.User;
+import com.example.ob_spring_security_oauth_github.repository.UserRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
