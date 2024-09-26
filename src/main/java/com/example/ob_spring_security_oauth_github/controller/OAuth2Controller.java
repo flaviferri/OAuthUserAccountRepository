@@ -1,3 +1,4 @@
+/*
 package com.example.ob_spring_security_oauth_github.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,4 +41,4 @@ public class OAuth2Controller {
         // Redirigir a una página de éxito de login
         return new RedirectView("/login-success");
     }
-}
+}*/

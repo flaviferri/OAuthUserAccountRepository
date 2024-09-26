@@ -1,3 +1,4 @@
+/*
 package com.example.ob_spring_security_oauth_github.config;
 
 
@@ -44,3 +45,4 @@ public class OAuth2Config {
                 .build();
     }
 }
+*/

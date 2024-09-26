@@ -19,7 +19,9 @@ public class SecurityConfig {
                         .anyRequest().authenticated() // Requiere autenticación para otras solicitudes
                 )
                 .oauth2Login(oauth2 -> oauth2
-                        .loginPage("/oauth2/authorization/github") // Ruta personalizada para iniciar sesión
+                        .loginPage("/oauth2/authorization/github")
+                        .defaultSuccessUrl("/login/success", true) // Redirigir a /login/success
+                // Ruta personalizada para iniciar sesión
                 );
 
         return http.build();
